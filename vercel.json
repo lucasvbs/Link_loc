@@ -1,0 +1,6 @@
+{
+  "framework": "vite",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "PORT=5000 BASE_PATH=/ pnpm --filter @workspace/linkerloc-site run build",
+  "outputDirectory": "artifacts/linkerloc-site/dist/public"
+}
