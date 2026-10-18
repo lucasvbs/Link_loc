@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "LinkerLoc"
+description = "Landing page da LinkerLoc para apresentar locação de tecnologia e experiências interativas para eventos, com destaque secundário para desenvolvimento de sites e sistemas."
+version = "1.0.0"
+id = "artifacts/linkerloc-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22860
+
+[services.development]
+run = "pnpm --filter @workspace/linkerloc-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/linkerloc-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/linkerloc-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22860"
+BASE_PATH = "/"
